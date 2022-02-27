@@ -1,12 +1,12 @@
-package main
+package states
 
 import "fmt"
 
-var farmerPosition string = ""
-var chickenPosition string = ""
-var foxPosition string = ""
-var cornPosition string = ""
-var boatPosition string = ""
+var FarmerPosition = ""
+var ChickenPosition = ""
+var FoxPosition = ""
+var CornPosition = ""
+var BoatPosition = ""
 
 var boat string = ""
 
@@ -26,52 +26,52 @@ var eCoast = ""
 var worldSituation = ""
 
 func main() {
-	farmerPosition = "Boat"
-	chickenPosition = "West"
-	foxPosition = "Boat"
-	cornPosition = "West"
-	boatPosition = "East"
-	position()
-	test()
+	Position()
+	Test()
 }
 
-func position() {
-	if farmerPosition == "West" {
+func Position() {
+	if FarmerPosition == "West" {
 		westSlot("Farmer")
-	} else if farmerPosition == "Boat" {
+	} else if FarmerPosition == "Boat" {
 		boatSlot("Farmer")
-	} else if farmerPosition == "East" {
+	} else if FarmerPosition == "East" {
 		eastSlot("Farmer")
 	}
 
-	if chickenPosition == "West" {
+	if ChickenPosition == "West" {
 		westSlot("Chicken")
-	} else if chickenPosition == "Boat" {
+	} else if ChickenPosition == "Boat" {
 		boatSlot("Chicken")
-	} else if chickenPosition == "East" {
+	} else if ChickenPosition == "East" {
 		eastSlot("Chicken")
 	}
 
-	if foxPosition == "West" {
+	if FoxPosition == "West" {
 		westSlot("Fox")
-	} else if foxPosition == "Boat" {
+	} else if FoxPosition == "Boat" {
 		boatSlot("Fox")
-	} else if foxPosition == "East" {
+	} else if FoxPosition == "East" {
 		eastSlot("Fox")
 	}
 
-	if cornPosition == "West" {
+	if CornPosition == "West" {
 		westSlot("Corn")
-	} else if cornPosition == "Boat" {
+	} else if CornPosition == "Boat" {
 		boatSlot("Corn")
-	} else if cornPosition == "East" {
+	} else if CornPosition == "East" {
 		eastSlot("Corn")
 	}
+}
 
-	if boatPosition == "West" {
+func PlaceBoat() {
+	boat = "\\_" + bSlot1 + "_" + bSlot2 + "_/"
+	if BoatPosition == "West" {
 		wCoast = boat
-	} else if boatPosition == "East" {
+		eCoast = ""
+	} else if BoatPosition == "East" {
 		eCoast = boat
+		wCoast = ""
 	}
 }
 
@@ -106,10 +106,9 @@ func boatSlot(item string) {
 	} else if bSlot2 == "" {
 		bSlot2 = item
 	}
-	boat = "\\_" + bSlot1 + "_" + bSlot2 + "_/"
 }
 
-func test() {
+func Test() {
 	worldSituation = "_" + wSlot1 + "_" + wSlot2 + "_" + wSlot3 + "_" + wSlot4 + "_W|" + wCoast + "_________" + eCoast + "|E_" + eSlot1 + "_" + eSlot2 + "_" + eSlot3 + "_" + eSlot4 + "_"
 	fmt.Print(worldSituation)
 }
