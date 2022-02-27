@@ -15,6 +15,7 @@ func initialize() {
 	s.CornPosition = "West"
 	s.BoatPosition = "East"
 	s.Position()
+	s.PlaceBoat()
 	s.Test()
 }
 
